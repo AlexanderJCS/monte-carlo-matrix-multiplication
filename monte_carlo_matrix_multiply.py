@@ -99,7 +99,7 @@ def main():
 
     sqrt_value = 4
     print("\n--- SQUARE ROOT --- ")
-    print(f"Monte Carlo: sqrt({sqrt_value}) = {monte_carlo_sqrt(2)}")
+    print(f"Monte Carlo: sqrt({sqrt_value}) = {monte_carlo_sqrt(sqrt_value)}")
     print(f"Deterministic: sqrt({sqrt_value}) = {np.sqrt(sqrt_value)}")
 
     v1 = np.array([0.1, 0.4, 0.9])
