@@ -10,7 +10,6 @@ $ pip install numpy
 ## Example Output
 ```
  --- COSINE --- 
- --- COSINE --- 
 Monte Carlo: cos(2) = -0.4076676776596233
 Deterministic: cos(2) = -0.4161468365471424
 
