@@ -15,8 +15,8 @@ def monte_carlo_cos(x: float, samples: int = 1000) -> float:
 
     rand = np.random.uniform(0, x, samples)
 
-    # It's a bit ironic that I'm using sin to eval cos using the monte carlo method,
-    #  but I would need cos to eval sin in a monte carlo sin algorithm
+    # It's a bit ironic that I'm using sin to eval cos,
+    # since I would need cos to eval sin in a monte carlo sin algorithm
     neg_sin_x = -np.sin(rand)
 
     return np.sum(neg_sin_x) * x / samples + 1
@@ -85,7 +85,7 @@ def monte_carlo_matrix_mul(m1: np.ndarray, m2: np.ndarray) -> np.ndarray:
 
     for row_i, row in enumerate(m1):
         for col_i, col in enumerate(m2.T):
-            dot_product = monte_carlo_dot_product(row, col)
+            dot_product = monte_carlo_dot_product(np.array(row), np.array(col))
             m_out[row_i, col_i] = dot_product
 
     return m_out
@@ -105,14 +105,17 @@ def main():
     v1 = np.array([0.1, 0.4, 0.9])
     v2 = np.array([0.4, 0.1, 0.5])
     print("\n--- DOT PRODUCT --- ")
-    print(f"Monte Carlo: {v1} ⋅ {v2} = {monte_carlo_dot_product(v1, v2)}")
-    print(f"Deterministic: {v1} ⋅ {v2} = {np.dot(v1, v2)}")
+    print(f"Vector 1: {v1}")
+    print(f"Vector 2: {v2}\n")
+    print(f"Monte Carlo: v1 ⋅ v2 = {monte_carlo_dot_product(v1, v2)}")
+    print(f"Deterministic: v1 ⋅ v2 = {np.dot(v1, v2)}")
 
     print("\n--- MATRIX MUL --- ")
     mat1 = np.array([
         [1, 2, 3, 4],
         [5, 6, 7, 8],
-        [9, 10, 11, 12]])
+        [9, 10, 11, 12]
+    ])
 
     mat2 = np.array([
         [3.4, 9.3, 4.4],
